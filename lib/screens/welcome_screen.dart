@@ -16,9 +16,8 @@ class WelcomeScreen extends StatelessWidget {
             ),
             CircleAvatar(
               radius: 55,
-              child: Icon(
-                Icons.ac_unit_rounded,
-                size: 75,
+              child: Image(
+                image: AssetImage("assets/images/logo.png"),
               ),
             ),
             Text(
@@ -40,7 +39,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 35,
+              height: 85,
             ),
           ],
         ),
@@ -54,7 +53,10 @@ class WelcomeScreen extends StatelessWidget {
             ),
           );
         },
-        child: const Text('skip'),
+        child: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text('skip'),
+        ),
       ),
     );
   }

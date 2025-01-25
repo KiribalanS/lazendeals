@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lazendeals/models/user_model.dart';
 import 'package:lazendeals/screens/home_screen.dart';
 import 'package:lazendeals/widgets/custom_container.dart';
-
-enum Gender { male, female }
 
 class GetAddressScreen extends StatefulWidget {
   const GetAddressScreen({super.key});
@@ -24,9 +23,8 @@ class _GetAddressScreenState extends State<GetAddressScreen> {
             ),
             const CircleAvatar(
               radius: 55,
-              child: Icon(
-                Icons.ac_unit_rounded,
-                size: 75,
+              child: Image(
+                image: AssetImage("assets/images/logo.png"),
               ),
             ),
             const Text(
@@ -38,90 +36,93 @@ class _GetAddressScreenState extends State<GetAddressScreen> {
             ),
             Expanded(
               child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Personal information",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.normal,
+                child: Container(
+                  margin: const EdgeInsets.only(left: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Personal information",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
-                    ),
-                    const Text(
-                      "Address",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.normal,
+                      const Text(
+                        "Address",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * .95,
-                      child: const TextField(
-                        maxLines: null,
-                        keyboardType: TextInputType.multiline,
-                        minLines: 4,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: "Enter your Address here"),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * .95,
+                        child: const TextField(
+                          maxLines: null,
+                          keyboardType: TextInputType.multiline,
+                          minLines: 4,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: "Enter your Address here"),
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    const Text(
-                      "Pin code",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.normal,
+                      const SizedBox(
+                        height: 25,
                       ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * .95,
-                      child: const TextField(
-                        maxLines: 1,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: "Enter your Pincode here"),
+                      const Text(
+                        "Pin code",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    const Text(
-                      "Gender",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.normal,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * .95,
+                        child: const TextField(
+                          maxLines: 1,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: "Enter your Pincode here"),
+                        ),
                       ),
-                    ),
-                    ListTile(
-                      title: const Text('male'),
-                      leading: Radio<Gender>(
-                        value: Gender.male,
-                        groupValue: character,
-                        onChanged: (Gender? value) {
-                          setState(() {
-                            character = value;
-                          });
-                        },
+                      const SizedBox(
+                        height: 25,
                       ),
-                    ),
-                    ListTile(
-                      title: const Text('Female'),
-                      leading: Radio<Gender>(
-                        value: Gender.female,
-                        groupValue: character,
-                        onChanged: (Gender? value) {
-                          setState(() {
-                            character = value;
-                          });
-                        },
+                      const Text(
+                        "Gender",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
-                    ),
-                  ],
+                      ListTile(
+                        title: const Text('Male'),
+                        leading: Radio<Gender>(
+                          value: Gender.male,
+                          groupValue: character,
+                          onChanged: (Gender? value) {
+                            setState(() {
+                              character = value;
+                            });
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        title: const Text('Female'),
+                        leading: Radio<Gender>(
+                          value: Gender.female,
+                          groupValue: character,
+                          onChanged: (Gender? value) {
+                            setState(() {
+                              character = value;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

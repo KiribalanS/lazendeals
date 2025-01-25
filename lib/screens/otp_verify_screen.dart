@@ -17,11 +17,10 @@ class OtpVerifyScreen extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 55,
-                child: Icon(
-                  Icons.ac_unit_rounded,
-                  size: 75,
+                child: Image(
+                  image: AssetImage("assets/images/logo.png"),
                 ),
               ),
               const Text(
@@ -31,61 +30,72 @@ class OtpVerifyScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const CircleAvatar(
-                radius: 55,
-                child: Icon(
-                  Icons.message,
-                  size: 75,
-                ),
-              ),
-              const Text(
-                "OTP verification",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Text("Enter the otp sent to mail@mail.com"),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: OtpTextField(
-                  numberOfFields: 5,
-                  showFieldAsBox: true,
-                  borderWidth: 3,
-                  fieldWidth: 40,
-                  filled: true,
-                  contentPadding: const EdgeInsets.all(10),
-                  fillColor: Colors.grey.shade200,
-                  //runs when a code is typed in
-                  onCodeChanged: (String code) {
-                    //handle validation or checks here
-                  },
-                  //runs when every textfield is filled
-                  onSubmit: (String verificationCode) {
-                    // showDialog(
-                    //     context: context,
-                    //     builder: (context) {
-                    //       return AlertDialog(
-                    //         title: const Text("Verification Code"),
-                    //         content: Text('Code entered is $verificationCode'),
-                    //       );
-                    //     });
-                  }, // end onSubmit
-                ),
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const OtpResultScreen(),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image(
+                      height: 75,
+                      width: 75,
+                      image: AssetImage("assets/images/message.png"),
                     ),
-                  );
-                },
-                child: const Text("Verify"),
+                    const Text(
+                      "OTP verification",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Text("Enter the otp sent to mail@mail.com"),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: OtpTextField(
+                        numberOfFields: 5,
+                        showFieldAsBox: true,
+                        borderWidth: 3,
+                        fieldWidth: 40,
+                        filled: true,
+                        contentPadding: const EdgeInsets.all(10),
+                        fillColor: Colors.grey.shade200,
+                        //runs when a code is typed in
+                        onCodeChanged: (String code) {
+                          //handle validation or checks here
+                        },
+                        //runs when every textfield is filled
+                        onSubmit: (String verificationCode) {
+                          // showDialog(
+                          //     context: context,
+                          //     builder: (context) {
+                          //       return AlertDialog(
+                          //         title: const Text("Verification Code"),
+                          //         content: Text('Code entered is $verificationCode'),
+                          //       );
+                          //     });
+                        }, // end onSubmit
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 25,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 55,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 15.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OtpResultScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text("Verify"),
+                ),
               ),
             ],
           ),

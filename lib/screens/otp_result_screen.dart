@@ -17,9 +17,8 @@ class OtpResultScreen extends StatelessWidget {
             ),
             const CircleAvatar(
               radius: 55,
-              child: Icon(
-                Icons.ac_unit_rounded,
-                size: 75,
+              child: Image(
+                image: AssetImage("assets/images/logo.png"),
               ),
             ),
             const Text(
@@ -29,36 +28,41 @@ class OtpResultScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const CircleAvatar(
-              radius: 55,
-              child: Icon(
-                Icons.message,
-                size: 75,
-              ),
-            ),
-            const Text(
-              "OTP verified",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const Text(
-              "your account has been verified successfully",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.normal,
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Image(
+                    height: 75,
+                    width: 75,
+                    image: AssetImage("assets/images/message.png"),
+                  ),
+                  const Text(
+                    "OTP verified",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Text(
+                    "your account has been verified successfully",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(
-              height: 25,
+              height: 75,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(18.0),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const WelcomeScreen(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lazendeals/screens/otp_verify_screen.dart';
 import 'package:lazendeals/widgets/custom_container.dart';
+import 'package:lazendeals/widgets/custom_formfield.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,11 +28,10 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 15,
               ),
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 55,
-                child: Icon(
-                  Icons.ac_unit_rounded,
-                  size: 75,
+                child: Image(
+                  image: AssetImage("assets/images/logo.png"),
                 ),
               ),
               const Text(
@@ -47,12 +47,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     CustomFormField(
                       controller: nameController,
-                      icon: const Icon(Icons.mail),
+                      icon: const Icon(Icons.person),
                       text: "Your name",
                     ),
                     CustomFormField(
                       controller: phoneNumberController,
-                      icon: const Icon(Icons.mail),
+                      icon: const Icon(Icons.phone),
                       text: "Your phone number",
                     ),
                     CustomFormField(
@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const OtpVerifyScreen(),
@@ -81,50 +81,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50,
               )
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CustomFormField extends StatelessWidget {
-  const CustomFormField({
-    super.key,
-    required this.text,
-    required this.controller,
-    required this.icon,
-  });
-  final TextEditingController controller;
-  final String text;
-  final Icon icon;
-  @override
-  Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8.0,
-          vertical: 5,
-        ),
-        child: Center(
-          child: SizedBox(
-            width: mediaQuery.width * 0.85,
-            child: TextFormField(
-              validator: (value) {
-                if (value == "") {
-                  return "please fill all the fields";
-                }
-                return null;
-              },
-              controller: controller,
-              decoration: InputDecoration(
-                hintText: text,
-                border: const OutlineInputBorder(),
-                suffixIcon: icon,
-              ),
-            ),
           ),
         ),
       ),

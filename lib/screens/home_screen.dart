@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:lazendeals/models/dummy.dart';
 import 'package:lazendeals/screens/product_details_screen.dart';
 import 'package:lazendeals/widgets/custom_drawer.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
@@ -31,6 +33,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           children: [
             const Padding(
@@ -47,127 +50,208 @@ class HomeScreen extends StatelessWidget {
                 hintText: "Search",
               ),
             ),
-            const SizedBox(
-              height: 25,
-            ),
             Container(
-              decoration: BoxDecoration(
-                border: Border.all(),
-              ),
+              // decoration: BoxDecoration(
+              //     // border: Border.all(),
+              //     // borderRadius: BorderRadius.circular(15),
+
+              //     ),
               height: mediaQuery.height * 0.22,
               width: mediaQuery.width * 0.85,
-              child: const Center(
-                child: Text("Advertisments"),
+              child: Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: const Image(
+                    image: AssetImage("assets/images/ad.jpeg"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProductDetailsScreen(),
-                    ),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                    ),
-                    height: mediaQuery.height * 0.22,
-                    width: mediaQuery.width * 0.4,
-                    child: const Center(
-                      child: Text("Products"),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: mediaQuery.width * .05,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                  ),
-                  height: mediaQuery.height * 0.22,
-                  width: mediaQuery.width * 0.4,
-                  child: const Center(
-                    child: Text("Products"),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 25,
             ),
             Container(
-              decoration: BoxDecoration(
-                border: Border.all(),
-              ),
-              padding: const EdgeInsets.all(8),
-              height: mediaQuery.height * 0.22,
-              width: mediaQuery.width * 0.85,
-              child: LayoutBuilder(
-                builder: (ctx, constraints) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Recently Viewed"),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(),
-                          ),
-                          height: MediaQuery.of(ctx).size.height * 0.16,
-                          width: constraints.minWidth * 0.2,
-                          child: const Center(
-                            child: Text("Product"),
-                          ),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(ctx).size.width * .02,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(),
-                          ),
-                          height: MediaQuery.of(ctx).size.height * 0.16,
-                          width: constraints.minWidth * 0.75,
-                          child: const Center(
-                            child: Text("Product Details"),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+              margin: const EdgeInsets.all(8),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 1,
+                  mainAxisSpacing: 10,
                 ),
+                itemCount: dummyCategory.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProductDetailsScreen(),
+                      ),
+                    ),
+                    child: Container(
+                      alignment: Alignment.bottomCenter,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/ad.jpeg"),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15),
+                        ),
+                        border: Border(
+                            left: BorderSide(),
+                            right: BorderSide(),
+                            top: BorderSide()),
+                      ),
+                      height: mediaQuery.height * 0.22,
+                      width: mediaQuery.width * 0.4,
+                      child: LayoutBuilder(builder: (context, constraints) {
+                        return Container(
+                          height: 37,
+                          width: constraints.maxWidth,
+                          color: const Color.fromRGBO(251, 215, 187, 1),
+                          child: Center(
+                            child: Text(
+                              dummyCategory[index].category,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(
               height: 25,
             ),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25),
-                side: const BorderSide(width: 2.5),
+            InkWell(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProductDetailsScreen(),
+                ),
               ),
-              child: SizedBox(
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/sweet.png"),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                  border: Border(
+                    left: BorderSide(width: 2.5),
+                    right: BorderSide(width: 2.5),
+                    top: BorderSide(width: 2.5),
+                    bottom: BorderSide(width: 2.5),
+                  ),
+                ),
                 height: mediaQuery.height * .2,
                 width: mediaQuery.width * .85,
-                child: const Center(
-                  child: Text(
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
+                child: LayoutBuilder(builder: (context, constraints) {
+                  return Container(
+                    height: 37,
+                    width: constraints.maxWidth,
+                    color: const Color.fromRGBO(251, 215, 187, 1),
+                    child: const Center(
+                      child: Text(
+                        "Tamil Nadu\nSweets and snacks",
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                    "Tamil Nadu\nSweets and snacks",
-                  ),
+                  );
+                }),
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            const Text(
+              "Recently Viewed",
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.left,
+            ),
+
+            SizedBox(
+              height: mediaQuery.height * 0.15,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: ListView.builder(
+                  itemCount: dummyCategory.length,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Card(
+                        child: Image(
+                          image: AssetImage(
+                            "assets/images/jwel.jpeg",
+                          ),
+                          fit: BoxFit.cover,
+                          width: 120,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
+
+            // Container(
+            //   decoration: BoxDecoration(
+            //     border: Border.all(),
+            //   ),
+            //   padding: const EdgeInsets.all(8),
+            //   height: mediaQuery.height * 0.22,
+            //   width: mediaQuery.width * 0.85,
+            //   child: LayoutBuilder(
+            //     builder: (ctx, constraints) => Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         const Text("Recently Viewed"),
+            //         Row(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           children: [
+            //             Container(
+            //               decoration: BoxDecoration(
+            //                 border: Border.all(),
+            //               ),
+            //               height: MediaQuery.of(ctx).size.height * 0.16,
+            //               width: constraints.minWidth * 0.2,
+            //               child: const Center(
+            //                 child: Text("Product"),
+            //               ),
+            //             ),
+            //             SizedBox(
+            //               width: MediaQuery.of(ctx).size.width * .02,
+            //             ),
+            //             Container(
+            //               decoration: BoxDecoration(
+            //                 border: Border.all(),
+            //               ),
+            //               height: MediaQuery.of(ctx).size.height * 0.16,
+            //               width: constraints.minWidth * 0.75,
+            //               child: const Center(
+            //                 child: Text("Product Details"),
+            //               ),
+            //             ),
+            //           ],
+            //         )
+            //       ],
+            //     ),
+            //   ),
+            // ),
             const SizedBox(
               height: 25,
             ),

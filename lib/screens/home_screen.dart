@@ -16,10 +16,6 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Lazendeals",
-          style: TextStyle(
-            fontSize: 37,
-            fontWeight: FontWeight.bold,
-          ),
         ),
         centerTitle: true,
         actions: [
@@ -136,7 +132,7 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Container(
                 alignment: Alignment.bottomCenter,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/sweet.png"),
                     fit: BoxFit.cover,
@@ -145,12 +141,7 @@ class HomeScreen extends StatelessWidget {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
                   ),
-                  border: Border(
-                    left: BorderSide(width: 2.5),
-                    right: BorderSide(width: 2.5),
-                    top: BorderSide(width: 2.5),
-                    bottom: BorderSide(width: 2.5),
-                  ),
+                  border: Border.all(width: 2.5),
                 ),
                 height: mediaQuery.height * .2,
                 width: mediaQuery.width * .85,
@@ -180,7 +171,6 @@ class HomeScreen extends StatelessWidget {
               ),
               textAlign: TextAlign.left,
             ),
-
             SizedBox(
               height: mediaQuery.height * 0.15,
               child: Padding(
@@ -207,51 +197,6 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
-            // Container(
-            //   decoration: BoxDecoration(
-            //     border: Border.all(),
-            //   ),
-            //   padding: const EdgeInsets.all(8),
-            //   height: mediaQuery.height * 0.22,
-            //   width: mediaQuery.width * 0.85,
-            //   child: LayoutBuilder(
-            //     builder: (ctx, constraints) => Column(
-            //       crossAxisAlignment: CrossAxisAlignment.start,
-            //       children: [
-            //         const Text("Recently Viewed"),
-            //         Row(
-            //           mainAxisAlignment: MainAxisAlignment.center,
-            //           children: [
-            //             Container(
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(),
-            //               ),
-            //               height: MediaQuery.of(ctx).size.height * 0.16,
-            //               width: constraints.minWidth * 0.2,
-            //               child: const Center(
-            //                 child: Text("Product"),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               width: MediaQuery.of(ctx).size.width * .02,
-            //             ),
-            //             Container(
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(),
-            //               ),
-            //               height: MediaQuery.of(ctx).size.height * 0.16,
-            //               width: constraints.minWidth * 0.75,
-            //               child: const Center(
-            //                 child: Text("Product Details"),
-            //               ),
-            //             ),
-            //           ],
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // ),
             const SizedBox(
               height: 25,
             ),

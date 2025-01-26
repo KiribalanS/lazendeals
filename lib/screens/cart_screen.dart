@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
+import 'package:lazendeals/widgets/my_cart_widget.dart';
+import 'package:lazendeals/widgets/my_order_widget.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -8,13 +10,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Lazendeals",
-          style: TextStyle(
-            fontSize: 37,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: const Text("Lazendeals"),
         centerTitle: true,
         actions: [
           IconButton(
@@ -28,51 +24,30 @@ class CartScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const Text(
-            "Your Cart",
-            style: TextStyle(
-              fontSize: 21,
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "Your Cart",
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Expanded(
             child: ListView.builder(
               itemCount: 3,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                    ),
-                    padding: const EdgeInsets.all(12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(),
-                          ),
-                          height: MediaQuery.of(context).size.height * 0.07,
-                          width: MediaQuery.of(context).size.width * 0.14,
-                          child: const Center(
-                            child: Text("Product"),
-                          ),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * .02,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(),
-                          ),
-                          height: MediaQuery.of(context).size.height * 0.07,
-                          width: MediaQuery.of(context).size.width * 0.7,
-                          child: const Center(
-                            child: Text("Product Details"),
-                          ),
-                        ),
-                      ],
-                    ),
+                return const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: MyCartWidget(),
+                      ),
+                      Divider(),
+                    ],
                   ),
                 );
               },

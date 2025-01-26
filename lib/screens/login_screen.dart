@@ -28,17 +28,16 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 15,
               ),
-              CircleAvatar(
-                radius: 55,
-                child: Image(
-                  image: AssetImage("assets/images/logo.png"),
-                ),
+              Image(
+                height: 115,
+                width: 115,
+                image: AssetImage("assets/images/logo.png"),
               ),
-              const Text(
-                "Lazendeals",
-                style: TextStyle(
-                  fontSize: 37,
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
+                  "Lazendeals",
+                  style: Theme.of(context).appBarTheme.titleTextStyle,
                 ),
               ),
               Expanded(

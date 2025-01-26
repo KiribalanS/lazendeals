@@ -21,18 +21,14 @@ class _GetAddressScreenState extends State<GetAddressScreen> {
             const SizedBox(
               height: 15,
             ),
-            const CircleAvatar(
-              radius: 55,
-              child: Image(
-                image: AssetImage("assets/images/logo.png"),
-              ),
+            const Image(
+              height: 115,
+              width: 115,
+              image: AssetImage("assets/images/logo.png"),
             ),
-            const Text(
+            Text(
               "Lazendeals",
-              style: TextStyle(
-                fontSize: 37,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).appBarTheme.titleTextStyle,
             ),
             Expanded(
               child: Center(

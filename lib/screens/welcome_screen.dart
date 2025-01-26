@@ -8,26 +8,22 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const CustomContainer(
+      body: CustomContainer(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            CircleAvatar(
-              radius: 55,
-              child: Image(
-                image: AssetImage("assets/images/logo.png"),
-              ),
+            const Image(
+              height: 115,
+              width: 115,
+              image: AssetImage("assets/images/logo.png"),
             ),
             Text(
               "Lazendeals",
-              style: TextStyle(
-                fontSize: 37,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).appBarTheme.titleTextStyle,
             ),
-            Expanded(
+            const Expanded(
               child: Center(
                 child: Text(
                   "Welcome to Lazendeals",
@@ -38,7 +34,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 85,
             ),
           ],

@@ -18,3 +18,10 @@ samples, guidance on mobile development, and a full API reference.
 
 Try to use custom pop up menu, link:
 https://pub.dev/packages/custom_pop_up_menu_fork/example
+
+
+
+Font details:
+Lazendeals - Cinzel decorative 
+Matha Headings ku - Ample display 
+Matha fonts ku normal fonts

@@ -14,29 +14,34 @@ class CustomNavButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return getPopUp(context);
-    return SizedBox(
-        height: MediaQuery.of(context).size.height * .15,
-        child: InkWell(
-          child: const Hero(
-            tag: 'hero-custom-tween',
-            child: Image(
-              image: AssetImage("assets/images/logo.png"),
-              height: 85,
-              width: 85,
-            ),
-          ),
-          onTap: () {
-            Navigator.of(context).push(
-              HeroDialogRoute(
-                builder: (context) => Container(
-                  child: const Center(
-                    child: MyWidget(),
-                  ),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 11.0),
+      child: SizedBox(
+          height: MediaQuery.of(context).size.height * .08,
+          child: Center(
+            child: InkWell(
+              child: const Hero(
+                tag: 'hero-custom-tween',
+                child: Image(
+                  image: AssetImage("assets/images/logo.png"),
+                  height: 85,
+                  width: 85,
                 ),
               ),
-            );
-          },
-        ));
+              onTap: () {
+                Navigator.of(context).push(
+                  HeroDialogRoute(
+                    builder: (context) => Container(
+                      child: const Center(
+                        child: MyWidget(),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          )),
+    );
   }
 }
 

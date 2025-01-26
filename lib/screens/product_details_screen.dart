@@ -17,6 +17,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.menu,
+            size: 32,
+            color: Colors.black,
+          ),
+          onPressed: () => Scaffold.of(context).openDrawer(),
+        ),
         title: const Text(
           "Lazendeals",
           style: TextStyle(
@@ -31,6 +39,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             icon: const Icon(
               Icons.notifications,
               size: 35,
+              color: Colors.black,
             ),
           ),
         ],

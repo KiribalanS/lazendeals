@@ -23,6 +23,7 @@ class OrdersScreen extends StatelessWidget {
             icon: const Icon(
               Icons.notifications,
               size: 35,
+              color: Colors.black,
             ),
           ),
         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lazendeals/models/dummy.dart';
 import 'package:lazendeals/screens/product_details_screen.dart';
+import 'package:lazendeals/screens/products_screen.dart';
 import 'package:lazendeals/widgets/custom_drawer.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
 
@@ -13,6 +14,14 @@ class CategoriesScreen extends StatelessWidget {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.menu,
+            size: 32,
+            color: Colors.black,
+          ),
+          onPressed: () => Scaffold.of(context).openDrawer(),
+        ),
         title: const Text("Lazendeals"),
         centerTitle: true,
         actions: [
@@ -21,6 +30,7 @@ class CategoriesScreen extends StatelessWidget {
             icon: const Icon(
               Icons.notifications,
               size: 35,
+              color: Colors.black,
             ),
           ),
         ],
@@ -56,40 +66,50 @@ class CategoriesScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    alignment: Alignment.bottomCenter,
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage("assets/images/jwel.jpeg"),
-                        fit: BoxFit.cover,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProductsScreen(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.bottomCenter,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                          image: AssetImage("assets/images/jwel.jpeg"),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(),
                       ),
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(),
-                    ),
-                    height: mediaQuery.height * 0.25,
-                    width: mediaQuery.width * 0.4,
-                    child: Padding(
-                      padding: const EdgeInsets.all(0.8),
-                      child: LayoutBuilder(builder: (context, constraints) {
-                        return Container(
-                          height: 37,
-                          width: constraints.maxWidth,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15),
+                      height: mediaQuery.height * 0.25,
+                      width: mediaQuery.width * 0.4,
+                      child: Padding(
+                        padding: const EdgeInsets.all(0.8),
+                        child: LayoutBuilder(builder: (context, constraints) {
+                          return Container(
+                            height: 37,
+                            width: constraints.maxWidth,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15),
+                              ),
+                              color: Color.fromRGBO(251, 215, 187, 1),
                             ),
-                            color: Color.fromRGBO(251, 215, 187, 1),
-                          ),
-                          child: Center(
-                            child: Text(
-                              dummyCategory[index].category,
-                              textAlign: TextAlign.center,
+                            child: Center(
+                              child: Text(
+                                dummyCategory[index].category,
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                          ),
-                        );
-                      }),
+                          );
+                        }),
+                      ),
                     ),
                   ),
                 );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lazendeals/models/dummy.dart';
 import 'package:lazendeals/screens/product_details_screen.dart';
+import 'package:lazendeals/screens/products_screen.dart';
 import 'package:lazendeals/widgets/custom_drawer.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
 
@@ -14,6 +15,14 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.menu,
+            size: 32,
+            color: Colors.black,
+          ),
+          onPressed: () => Scaffold.of(context).openDrawer(),
+        ),
         title: const Text(
           "Lazendeals",
         ),
@@ -24,6 +33,7 @@ class HomeScreen extends StatelessWidget {
             icon: const Icon(
               Icons.notifications,
               size: 35,
+              color: Colors.black,
             ),
           ),
         ],
@@ -81,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ProductDetailsScreen(),
+                        builder: (context) => const ProductsScreen(),
                       ),
                     ),
                     child: Container(

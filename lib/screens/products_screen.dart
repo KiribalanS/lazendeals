@@ -4,12 +4,20 @@ import 'package:lazendeals/widgets/custom_drawer.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
 import 'package:lazendeals/widgets/products_widget.dart';
 
-class ProductsScreen extends StatelessWidget {
+class ProductsScreen extends StatefulWidget {
   const ProductsScreen({super.key});
 
   @override
+  State<ProductsScreen> createState() => _ProductsScreenState();
+}
+
+class _ProductsScreenState extends State<ProductsScreen> {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
+      key: scaffoldKey,
       drawer: const CustomDrawer(),
       appBar: AppBar(
         leading: IconButton(
@@ -18,7 +26,7 @@ class ProductsScreen extends StatelessWidget {
             size: 32,
             color: Colors.black,
           ),
-          onPressed: () => Scaffold.of(context).openDrawer(),
+          onPressed: () => scaffoldKey.currentState?.openDrawer(),
         ),
         title: const Text("Lazendeals"),
         centerTitle: true,

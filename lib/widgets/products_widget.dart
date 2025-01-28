@@ -29,11 +29,8 @@ class ProductsWidget extends StatelessWidget {
                         image: AssetImage("assets/images/ad.jpeg"),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
-                        bottomLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
                       ),
                       border: Border(
                         left: BorderSide(width: 2),

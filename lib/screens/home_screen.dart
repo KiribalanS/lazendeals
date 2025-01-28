@@ -6,13 +6,20 @@ import 'package:lazendeals/screens/products_screen.dart';
 import 'package:lazendeals/widgets/custom_drawer.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
+      key: scaffoldKey,
       drawer: const CustomDrawer(),
       appBar: AppBar(
         leading: IconButton(
@@ -21,7 +28,7 @@ class HomeScreen extends StatelessWidget {
             size: 32,
             color: Colors.black,
           ),
-          onPressed: () => Scaffold.of(context).openDrawer(),
+          onPressed: () => scaffoldKey.currentState?.openDrawer(),
         ),
         title: const Text(
           "Lazendeals",
@@ -56,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                 hintText: "Search",
               ),
             ),
-            Container(
+            SizedBox(
               // decoration: BoxDecoration(
               //     // border: Border.all(),
               //     // borderRadius: BorderRadius.circular(15),
@@ -87,44 +94,51 @@ class HomeScreen extends StatelessWidget {
                 ),
                 itemCount: dummyCategory.length,
                 itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ProductsScreen(),
-                      ),
-                    ),
-                    child: Container(
-                      alignment: Alignment.bottomCenter,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/ad.jpeg"),
-                          fit: BoxFit.cover,
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProductsScreen(),
                         ),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(15),
-                        ),
-                        border: Border(
-                            left: BorderSide(),
-                            right: BorderSide(),
-                            top: BorderSide()),
                       ),
-                      height: mediaQuery.height * 0.22,
-                      width: mediaQuery.width * 0.4,
-                      child: LayoutBuilder(builder: (context, constraints) {
-                        return Container(
-                          height: 37,
-                          width: constraints.maxWidth,
-                          color: const Color.fromRGBO(251, 215, 187, 1),
-                          child: Center(
-                            child: Text(
-                              dummyCategory[index].category,
-                              textAlign: TextAlign.center,
-                            ),
+                      child: Container(
+                        alignment: Alignment.bottomCenter,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/ad.jpeg"),
+                            fit: BoxFit.cover,
                           ),
-                        );
-                      }),
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          border: Border(
+                              left: BorderSide(),
+                              right: BorderSide(),
+                              top: BorderSide()),
+                        ),
+                        height: mediaQuery.height * 0.22,
+                        width: mediaQuery.width * 0.4,
+                        child: LayoutBuilder(builder: (context, constraints) {
+                          return Container(
+                            padding: const EdgeInsets.all(5),
+                            decoration: const BoxDecoration(
+                              borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(15),
+                                  bottomRight: Radius.circular(15)),
+                              color: Color.fromRGBO(251, 215, 187, 1),
+                            ),
+                            constraints:
+                                BoxConstraints(maxHeight: 49, minHeight: 37),
+                            width: constraints.maxWidth,
+                            child: Center(
+                              child: Text(
+                                dummyCategory[index].category,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
                     ),
                   );
                 },
@@ -143,11 +157,11 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 alignment: Alignment.bottomCenter,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage("assets/images/sweet.png"),
                     fit: BoxFit.cover,
                   ),
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
                   ),
@@ -189,7 +203,7 @@ class HomeScreen extends StatelessWidget {
                   itemCount: dummyCategory.length,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
                     return const Padding(
                       padding: EdgeInsets.all(8.0),

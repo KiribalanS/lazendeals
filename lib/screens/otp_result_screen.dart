@@ -24,23 +24,23 @@ class OtpResultScreen extends StatelessWidget {
               "Lazendeals",
               style: Theme.of(context).appBarTheme.titleTextStyle,
             ),
-            Expanded(
+            const Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Image(
+                  Image(
                     height: 75,
                     width: 75,
                     image: AssetImage("assets/images/message.png"),
                   ),
-                  const Text(
+                  Text(
                     "OTP verified",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Text(
+                  Text(
                     "your account has been verified successfully",
                     textAlign: TextAlign.center,
                     style: TextStyle(

@@ -14,7 +14,7 @@ class MyOrderWidget extends StatelessWidget {
           width: mediaQuery.width * 0.20,
           child: const Image(
             fit: BoxFit.cover,
-            image: const AssetImage("assets/images/sweet.png"),
+            image: AssetImage("assets/images/sweet.png"),
           ),
         ),
         const Column(

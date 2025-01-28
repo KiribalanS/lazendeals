@@ -2,16 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:lazendeals/models/dummy.dart';
 import 'package:lazendeals/screens/product_details_screen.dart';
 import 'package:lazendeals/screens/products_screen.dart';
+import 'package:lazendeals/widgets/advertisement_widget.dart';
 import 'package:lazendeals/widgets/custom_drawer.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
 
-class CategoriesScreen extends StatelessWidget {
+class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
 
+  @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen> {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
+      key: scaffoldKey,
       drawer: const CustomDrawer(),
       appBar: AppBar(
         leading: IconButton(
@@ -20,7 +28,7 @@ class CategoriesScreen extends StatelessWidget {
             size: 32,
             color: Colors.black,
           ),
-          onPressed: () => Scaffold.of(context).openDrawer(),
+          onPressed: () => scaffoldKey.currentState?.openDrawer(),
         ),
         title: const Text("Lazendeals"),
         centerTitle: true,
@@ -118,45 +126,7 @@ class CategoriesScreen extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            InkWell(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ProductDetailsScreen(),
-                ),
-              ),
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage("assets/images/sweet.png"),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: const Radius.circular(15),
-                  ),
-                  border: Border.all(width: 2.5),
-                ),
-                height: mediaQuery.height * .2,
-                width: mediaQuery.width * .85,
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    return Container(
-                      height: 37,
-                      width: constraints.maxWidth,
-                      color: const Color.fromRGBO(251, 215, 187, 1),
-                      child: const Center(
-                        child: Text(
-                          "Tamil Nadu\nSweets and snacks",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
+            const AdvertisementWidget(),
             const CustomNavButton(),
           ],
         ),

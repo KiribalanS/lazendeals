@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
 import 'package:lazendeals/widgets/my_cart_widget.dart';
-import 'package:lazendeals/widgets/my_order_widget.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});

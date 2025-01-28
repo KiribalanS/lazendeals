@@ -17,7 +17,7 @@ class OtpVerifyScreen extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              Image(
+              const Image(
                 height: 115,
                 width: 115,
                 image: AssetImage("assets/images/logo.png"),
@@ -30,7 +30,7 @@ class OtpVerifyScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image(
+                    const Image(
                       height: 75,
                       width: 75,
                       image: AssetImage("assets/images/message.png"),
@@ -76,7 +76,7 @@ class OtpVerifyScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 55,
               ),
               Padding(

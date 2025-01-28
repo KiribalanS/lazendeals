@@ -1,10 +1,8 @@
-import 'package:custom_pop_up_menu_fork/custom_pop_up_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:lazendeals/screens/cart_screen.dart';
 import 'package:lazendeals/screens/categories_screen.dart';
 import 'package:lazendeals/screens/home_screen.dart';
 import 'package:lazendeals/screens/orders_screen.dart';
-import 'package:lazendeals/screens/product_details_screen.dart';
 import 'package:lazendeals/screens/user_home_screen.dart';
 import 'package:lazendeals/widgets/hero_dialog_widget.dart';
 
@@ -54,8 +52,8 @@ class MyWidget extends StatelessWidget {
       children: [
         Positioned(
           bottom: 155,
-          left: 10,
-          right: 10,
+          left: 35,
+          right: 35,
           child: Hero(
             tag: 'hero-custom-tween',
             createRectTween: (Rect? begin, Rect? end) {
@@ -67,14 +65,14 @@ class MyWidget extends StatelessWidget {
                   color: const Color.fromRGBO(251, 215, 187, 1),
                   borderRadius: BorderRadius.circular(15)),
               height: MediaQuery.of(context).size.height * .05,
-              width: MediaQuery.of(context).size.width * .8,
+              width: MediaQuery.of(context).size.width * .75,
               child: ListView(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: IconButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -85,11 +83,13 @@ class MyWidget extends StatelessWidget {
                               ));
                         },
                         icon: const Image(
+                            height: 35,
+                            width: 35,
                             image: AssetImage(
                                 "assets/images/custom_nav/home.png"))),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: IconButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -100,11 +100,13 @@ class MyWidget extends StatelessWidget {
                               ));
                         },
                         icon: const Image(
+                            height: 35,
+                            width: 35,
                             image: AssetImage(
                                 "assets/images/custom_nav/category.png"))),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: IconButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -115,11 +117,13 @@ class MyWidget extends StatelessWidget {
                               ));
                         },
                         icon: const Image(
+                            height: 35,
+                            width: 35,
                             image: AssetImage(
                                 "assets/images/custom_nav/account.png"))),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: IconButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -130,11 +134,13 @@ class MyWidget extends StatelessWidget {
                               ));
                         },
                         icon: const Image(
+                            height: 35,
+                            width: 35,
                             image: AssetImage(
                                 "assets/images/custom_nav/gift.png"))),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: IconButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -145,6 +151,8 @@ class MyWidget extends StatelessWidget {
                               ));
                         },
                         icon: const Image(
+                            height: 35,
+                            width: 35,
                             image: AssetImage(
                                 "assets/images/custom_nav/cart.png"))),
                   ),

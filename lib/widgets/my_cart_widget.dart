@@ -53,7 +53,7 @@ class MyCartWidget extends StatelessWidget {
             width: mediaQuery.width * .52,
             child: Column(
               children: [
-                Text(
+                const Text(
                   "Description",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -62,19 +62,19 @@ class MyCartWidget extends StatelessWidget {
                 ),
                 Text(
                   dummyProduct[0].description,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 16,
                   ),
                 ),
-                Text(
+                const Text(
                   "Quantity : 500g",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
                 ),
-                Text(
+                const Text(
                   "Price : Rs 1000",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,

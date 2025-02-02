@@ -8,13 +8,22 @@ class CustomDrawer extends StatelessWidget {
     List<String> functionNames = [
       "Account Details",
       "Wishlist",
-      "About us",
-      "Privacy policy",
+      "About Us",
+      "Privacy Policy",
       "Customer care",
-      "Help us",
+      "Help Us",
     ];
+    Map<String, IconData> functionIcons = {
+      "Account Details": Icons.account_circle_sharp,
+      "Wishlist": Icons.favorite,
+      "About Us": Icons.info,
+      "Privacy Policy": Icons.privacy_tip,
+      "Customer care": Icons.phone,
+      "Help Us": Icons.question_mark_outlined,
+    };
     final mediaQuery = MediaQuery.of(context).size;
     return Drawer(
+      backgroundColor: const Color.fromRGBO(252, 238, 197, 1),
       child: Column(
         children: [
           SizedBox(height: mediaQuery.height * .05),
@@ -31,7 +40,7 @@ class CustomDrawer extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(functionNames[index]),
-                  leading: const Icon(Icons.textsms),
+                  leading: Icon(functionIcons[functionNames[index]]),
                 );
               },
             ),

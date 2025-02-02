@@ -28,38 +28,47 @@ class OrdersScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
+      body: Stack(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              "Your Orders",
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: MyOrderWidget(),
-                      ),
-                      Divider(),
-                    ],
+          Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Your Orders",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
                   ),
-                );
-              },
-            ),
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: MyOrderWidget(),
+                          ),
+                          Divider(),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
-          const CustomNavButton(),
+          const Positioned(
+            bottom: 35,
+            left: 10,
+            right: 10,
+            child: CustomNavButton(),
+          ),
         ],
       ),
     );

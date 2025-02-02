@@ -46,156 +46,162 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
-              width: 25,
-            ),
-            const Center(
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(
-                      Icons.home,
-                      size: 30,
-                    ),
-                    SizedBox(
-                      width: 25,
-                    ),
-                    Center(
-                      child: Text(
-                        style: TextStyle(
-                          fontSize: 27,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        "Helloo, Name!",
-                      ),
-                    ),
-                  ],
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 25,
                 ),
-              ),
-            ),
-            const SizedBox(
-              width: 35,
-            ),
-            const Text(
-              "Recently Viewed",
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.left,
-            ),
-            SizedBox(
-              height: mediaQuery.height * 0.15,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: ListView.builder(
-                  itemCount: dummyCategory.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Card(
-                        child: Image(
-                          image: AssetImage(
-                            "assets/images/jwel.jpeg",
+                const Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Icons.home,
+                          size: 30,
+                        ),
+                        SizedBox(
+                          width: 25,
+                        ),
+                        Center(
+                          child: Text(
+                            style: TextStyle(
+                              fontSize: 27,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            "Helloo, Name!",
                           ),
-                          fit: BoxFit.cover,
-                          width: 120,
                         ),
-                      ),
-                    );
-                  },
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            const Text(
-              "Your orders",
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.left,
-            ),
-            SizedBox(
-              height: mediaQuery.height * 0.15,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: ListView.builder(
-                  itemCount: dummyCategory.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Card(
-                        child: Image(
-                          image: AssetImage(
-                            "assets/images/ad.jpeg",
+                const SizedBox(
+                  width: 35,
+                ),
+                const Text(
+                  "Recently Viewed",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: mediaQuery.height * 0.15,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: ListView.builder(
+                      itemCount: dummyCategory.length,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Card(
+                            child: Image(
+                              image: AssetImage(
+                                "assets/images/jwel.jpeg",
+                              ),
+                              fit: BoxFit.cover,
+                              width: 120,
+                            ),
                           ),
-                          fit: BoxFit.cover,
-                          width: 120,
-                        ),
-                      ),
-                    );
-                  },
+                        );
+                      },
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            const Text(
-              "Wish list",
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.left,
-            ),
-            SizedBox(
-              height: mediaQuery.height * 0.15,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: ListView.builder(
-                  itemCount: dummyCategory.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Card(
-                        child: Image(
-                          image: AssetImage(
-                            "assets/images/sweet.png",
+                const SizedBox(
+                  height: 25,
+                ),
+                const Text(
+                  "Your orders",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: mediaQuery.height * 0.15,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: ListView.builder(
+                      itemCount: dummyCategory.length,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Card(
+                            child: Image(
+                              image: AssetImage(
+                                "assets/images/ad.jpeg",
+                              ),
+                              fit: BoxFit.cover,
+                              width: 120,
+                            ),
                           ),
-                          fit: BoxFit.cover,
-                          width: 120,
-                        ),
-                      ),
-                    );
-                  },
+                        );
+                      },
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(
+                  height: 25,
+                ),
+                const Text(
+                  "Wish list",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: mediaQuery.height * 0.15,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: ListView.builder(
+                      itemCount: dummyCategory.length,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Card(
+                            child: Image(
+                              image: AssetImage(
+                                "assets/images/sweet.png",
+                              ),
+                              fit: BoxFit.cover,
+                              width: 120,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 50,
-            ),
-            const CustomNavButton(),
-          ],
-        ),
+          ),
+          const Positioned(
+            bottom: 35,
+            left: 10,
+            right: 10,
+            child: CustomNavButton(),
+          ),
+        ],
       ),
     );
   }

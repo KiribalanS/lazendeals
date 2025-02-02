@@ -43,93 +43,103 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              width: 25,
-            ),
-            const Center(
-              child: Text(
-                style: TextStyle(
-                  fontSize: 27,
-                  fontWeight: FontWeight.bold,
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  width: 25,
                 ),
-                "Categories",
-              ),
-            ),
-            const SizedBox(
-              width: 25,
-            ),
-            GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                childAspectRatio: 1,
-              ),
-              shrinkWrap: true,
-              itemCount: dummyCategory.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProductsScreen(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      alignment: Alignment.bottomCenter,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/jwel.jpeg"),
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(),
-                      ),
-                      height: mediaQuery.height * 0.25,
-                      width: mediaQuery.width * 0.4,
-                      child: Padding(
-                        padding: const EdgeInsets.all(0.8),
-                        child: LayoutBuilder(builder: (context, constraints) {
-                          return Container(
-                            height: 37,
-                            width: constraints.maxWidth,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(15),
-                                bottomRight: Radius.circular(15),
-                              ),
-                              color: Color.fromRGBO(251, 215, 187, 1),
-                            ),
-                            child: Center(
-                              child: Text(
-                                dummyCategory[index].category,
-                                textAlign: TextAlign.center,
-                              ),
+                const Center(
+                  child: Text(
+                    style: TextStyle(
+                      fontSize: 27,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    "Categories",
+                  ),
+                ),
+                const SizedBox(
+                  width: 25,
+                ),
+                GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                    childAspectRatio: 1,
+                  ),
+                  shrinkWrap: true,
+                  itemCount: dummyCategory.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProductsScreen(),
                             ),
                           );
-                        }),
+                        },
+                        child: Container(
+                          alignment: Alignment.bottomCenter,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            image: const DecorationImage(
+                              image: AssetImage("assets/images/jwel.jpeg"),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(),
+                          ),
+                          height: mediaQuery.height * 0.25,
+                          width: mediaQuery.width * 0.4,
+                          child: Padding(
+                            padding: const EdgeInsets.all(0.8),
+                            child:
+                                LayoutBuilder(builder: (context, constraints) {
+                              return Container(
+                                height: 37,
+                                width: constraints.maxWidth,
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(15),
+                                    bottomRight: Radius.circular(15),
+                                  ),
+                                  color: Color.fromRGBO(251, 215, 187, 1),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    dummyCategory[index].category,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              );
+                            }),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                );
-              },
+                    );
+                  },
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                const AdvertisementWidget(),
+              ],
             ),
-            const SizedBox(
-              height: 5,
-            ),
-            const AdvertisementWidget(),
-            const CustomNavButton(),
-          ],
-        ),
+          ),
+          const Positioned(
+            bottom: 35,
+            left: 10,
+            right: 10,
+            child: CustomNavButton(),
+          ),
+        ],
       ),
     );
   }

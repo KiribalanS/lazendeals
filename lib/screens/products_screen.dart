@@ -41,25 +41,31 @@ class _ProductsScreenState extends State<ProductsScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: dummyProduct.length,
-              itemBuilder: (context, index) {
-                return ProductsWidget(
-                  productModel: dummyProduct[index],
-                );
-              },
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: dummyProduct.length,
+                  itemBuilder: (context, index) {
+                    return ProductsWidget(
+                      productModel: dummyProduct[index],
+                    );
+                  },
+                ),
+              ],
             ),
-            const CustomNavButton(),
-            const SizedBox(
-              height: 15,
-            ),
-          ],
-        ),
+          ),
+          const Positioned(
+            bottom: 35,
+            left: 10,
+            right: 10,
+            child: CustomNavButton(),
+          ),
+        ],
       ),
     );
   }

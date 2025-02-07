@@ -6,10 +6,12 @@ class CustomFormField extends StatelessWidget {
     required this.text,
     required this.controller,
     required this.icon,
+    required this.callback,
   });
   final TextEditingController controller;
   final String text;
   final Icon icon;
+  final String? Function(String?) callback;
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -24,12 +26,7 @@ class CustomFormField extends StatelessWidget {
           child: SizedBox(
             width: mediaQuery.width * 0.85,
             child: TextFormField(
-              validator: (value) {
-                if (value == "") {
-                  return "please fill all the fields";
-                }
-                return null;
-              },
+              validator: callback,
               controller: controller,
               decoration: InputDecoration(
                 hintText: text,

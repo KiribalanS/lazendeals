@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lazendeals/auth/auth_bloc/auth_bloc.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -49,7 +51,9 @@ class CustomDrawer extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(),
-              onPressed: () {},
+              onPressed: () {
+                context.read<AuthBloc>().add(AuthLogOutEvent());
+              },
               child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

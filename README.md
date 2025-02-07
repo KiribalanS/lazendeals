@@ -25,3 +25,6 @@ Font details:
 Lazendeals - Cinzel decorative 
 Matha Headings ku - Ample display 
 Matha fonts ku normal fonts
+
+
+use perccentage to calculate increase in quantity.

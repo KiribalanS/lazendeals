@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lazendeals/models/dummy.dart';
-import 'package:lazendeals/screens/product_details_screen.dart';
 import 'package:lazendeals/screens/products_screen.dart';
 import 'package:lazendeals/widgets/advertisement_widget.dart';
 import 'package:lazendeals/widgets/custom_drawer.dart';

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lazendeals/auth/auth_bloc/auth_bloc.dart';
 import 'package:lazendeals/auth/screens/login_screen.dart';
+import 'package:lazendeals/cart/bloc/cart_bloc.dart';
 import 'package:lazendeals/screens/home_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -10,7 +11,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Supabase.initialize(
-    url: 'http://192.168.0.138:8001',
+    // url: 'http://192.168.0.138:8001',
+    url: 'http://192.168.1.4:8001',
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
   );
@@ -31,6 +33,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (_) => AuthBloc(),
+        ),
+        BlocProvider(
+          create: (_) => CartBloc(),
         ),
       ],
       child: MaterialApp(

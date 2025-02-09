@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lazendeals/screens/cart_screen.dart';
+import 'package:lazendeals/cart/screens/cart_screen.dart';
 import 'package:lazendeals/screens/categories_screen.dart';
 import 'package:lazendeals/screens/home_screen.dart';
 import 'package:lazendeals/screens/orders_screen.dart';
@@ -58,7 +58,7 @@ class MyWidget extends StatelessWidget {
     return Stack(
       children: [
         Positioned(
-          bottom: 155,
+          bottom: 130,
           left: 35,
           right: 35,
           child: Hero(
@@ -71,7 +71,7 @@ class MyWidget extends StatelessWidget {
               decoration: BoxDecoration(
                   color: const Color.fromRGBO(251, 215, 187, 1),
                   borderRadius: BorderRadius.circular(15)),
-              height: MediaQuery.of(context).size.height * .05,
+              height: MediaQuery.of(context).size.height * .065,
               width: MediaQuery.of(context).size.width * .75,
               child: ListView(
                 shrinkWrap: true,

@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lazendeals/cart/bloc/cart_bloc.dart';
 import 'package:lazendeals/models/product_model.dart';
 import 'package:lazendeals/screens/product_details_screen.dart';
 
-class ProductsWidget extends StatelessWidget {
+class ProductsWidget extends StatefulWidget {
   const ProductsWidget({
     required this.productModel,
     super.key,
   });
   final ProductModel productModel;
+
+  @override
+  State<ProductsWidget> createState() => _ProductsWidgetState();
+}
+
+class _ProductsWidgetState extends State<ProductsWidget> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -48,7 +56,7 @@ class ProductsWidget extends StatelessWidget {
                         color: const Color.fromRGBO(251, 215, 187, 1),
                         child: Center(
                           child: Text(
-                            productModel.productName,
+                            widget.productModel.productName,
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -72,7 +80,7 @@ class ProductsWidget extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 18.0),
+                padding: const EdgeInsets.only(left: 8.0),
                 child: SizedBox(
                   width: mediaQuery.width * .49,
                   child: Column(
@@ -85,7 +93,7 @@ class ProductsWidget extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        productModel.description,
+                        widget.productModel.description,
                         style: const TextStyle(
                           fontWeight: FontWeight.normal,
                           fontSize: 16,
@@ -96,13 +104,12 @@ class ProductsWidget extends StatelessWidget {
                               backgroundColor:
                                   const Color.fromRGBO(251, 215, 187, 1)),
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const ProductDetailsScreen(),
-                              ),
-                            );
+                            context.read<CartBloc>().add(
+                                  AddCartEvent(
+                                    productModel: widget.productModel,
+                                    context: context,
+                                  ),
+                                );
                           },
                           child: const SizedBox(
                             width: 130,

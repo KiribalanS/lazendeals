@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lazendeals/cart/bloc/cart_bloc.dart';
+import 'package:lazendeals/models/product_model.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
-import 'package:lazendeals/widgets/my_cart_widget.dart';
+import 'package:lazendeals/cart/widgets/my_cart_widget.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -30,30 +33,36 @@ class CartScreen extends StatelessWidget {
                 padding: EdgeInsets.all(8.0),
                 child: Text(
                   "Your Cart",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: MyCartWidget(),
+              BlocConsumer<CartBloc, List<ProductModel>>(
+                listener: (context, state) {},
+                builder: (context, state) {
+                  return Expanded(
+                    child: ListView.builder(
+                      itemCount: state.length,
+                      itemBuilder: (context, index) {
+                        return const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: MyCartWidget(),
+                              ),
+                              Divider(),
+                            ],
                           ),
-                          Divider(),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
             ],
           ),

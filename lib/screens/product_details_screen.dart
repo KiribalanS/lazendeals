@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lazendeals/cart/bloc/cart_bloc.dart';
 import 'package:lazendeals/models/dummy.dart';
-import 'package:lazendeals/screens/cart_screen.dart';
+import 'package:lazendeals/cart/screens/cart_screen.dart';
 import 'package:lazendeals/screens/confirm_address.dart';
 import 'package:lazendeals/widgets/advertisement_widget.dart';
 import 'package:lazendeals/widgets/custom_drawer.dart';
@@ -215,12 +217,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(251, 215, 187, 1)),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CartScreen(),
-                      ),
-                    );
+                    context.read<CartBloc>().add(
+                          AddCartEvent(
+                              productModel: dummyProduct[0], context: context),
+                        );
                   },
                   child: const SizedBox(
                     width: 250,

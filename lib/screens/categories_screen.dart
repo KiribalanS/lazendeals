@@ -129,6 +129,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   height: 5,
                 ),
                 const AdvertisementWidget(),
+                const SizedBox(
+                  height: 15,
+                ),
               ],
             ),
           ),

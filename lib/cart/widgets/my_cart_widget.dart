@@ -31,8 +31,8 @@ class MyCartWidget extends StatelessWidget {
               bottom: BorderSide(width: 2),
             ),
           ),
-          height: mediaQuery.height * 0.15,
-          width: mediaQuery.width * 0.30,
+          height: mediaQuery.height * 0.12,
+          width: mediaQuery.width * 0.25,
           child: LayoutBuilder(builder: (context, constraints) {
             return Container(
               height: 37,
@@ -48,10 +48,11 @@ class MyCartWidget extends StatelessWidget {
           }),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 18.0),
+          padding: const EdgeInsets.only(left: 12.0),
           child: SizedBox(
-            width: mediaQuery.width * .52,
+            width: mediaQuery.width * .56,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   "Description",

@@ -8,20 +8,14 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SupabaseClient supabase = Supabase.instance.client;
   AuthBloc() : super(AuthInitial()) {
-    on<AuthLoginEvent>(
-      (event, emit) => authLoginEvent(event, emit),
-    );
+    on<AuthLoginEvent>(_authLoginEvent);
 
-    on<VerifyOtpEvent>(
-      (event, emit) => authVerifyOtpEvent(event, emit),
-    );
+    on<VerifyOtpEvent>(_authVerifyOtpEvent);
 
-    on<AuthLogOutEvent>(
-      (event, emit) => authLogOutEvent(event, emit),
-    );
+    on<AuthLogOutEvent>(_authLogOutEvent);
   }
 
-  authLoginEvent(AuthLoginEvent event, Emitter<AuthState> emit) async {
+  _authLoginEvent(AuthLoginEvent event, Emitter<AuthState> emit) async {
     print("Login called");
     //login feature. send otp to mail.
 
@@ -38,7 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     return;
   }
 
-  authVerifyOtpEvent(VerifyOtpEvent event, Emitter<AuthState> emit) async {
+  _authVerifyOtpEvent(VerifyOtpEvent event, Emitter<AuthState> emit) async {
     final res = await supabase.auth
         .verifyOTP(type: OtpType.email, email: event.email, token: event.otp);
 
@@ -52,7 +46,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  authLogOutEvent(AuthLogOutEvent event, Emitter<AuthState> emit) async {
+  _authLogOutEvent(AuthLogOutEvent event, Emitter<AuthState> emit) async {
     await supabase.auth.signOut();
     emit(AuthInitial());
   }

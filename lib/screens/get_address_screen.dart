@@ -130,10 +130,11 @@ class _GetAddressScreenState extends State<GetAddressScreen> {
       ),
       floatingActionButton: ElevatedButton(
         onPressed: () {
-          Navigator.of(context).pushReplacement(
+          Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
               builder: (context) => const HomeScreen(),
             ),
+            (route) => false,
           );
         },
         child: const Text("Next"),

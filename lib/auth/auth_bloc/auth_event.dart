@@ -12,11 +12,17 @@ class AuthLoginEvent extends AuthEvent {
       {required this.name, required this.email, required this.phone});
 }
 
-class AuthLogOutEvent extends AuthEvent {}
+class AuthLogOutEvent extends AuthEvent {
+  final BuildContext context;
+
+  AuthLogOutEvent({required this.context});
+}
 
 class VerifyOtpEvent extends AuthEvent {
   final String email;
+  final String userId;
   final String otp;
 
-  VerifyOtpEvent({required this.otp, required this.email});
+  VerifyOtpEvent(
+      {required this.otp, required this.email, required this.userId});
 }

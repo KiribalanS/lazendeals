@@ -18,4 +18,14 @@ class AuthFailureState extends AuthState {
   AuthFailureState({required this.failureMessage});
 }
 
-class AuthOtpSentState extends AuthState {}
+class AuthOtpSentState extends AuthState {
+  final String userId;
+
+  AuthOtpSentState({required this.userId});
+}
+
+class AuthErrorState extends AuthState {
+  final String errorMessage;
+
+  AuthErrorState({required this.errorMessage});
+}

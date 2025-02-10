@@ -4,7 +4,6 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:lazendeals/auth/auth_bloc/auth_bloc.dart';
 import 'package:lazendeals/auth/screens/otp_result_screen.dart';
 import 'package:lazendeals/widgets/custom_container.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 
 class OtpVerifyScreen extends StatefulWidget {
   const OtpVerifyScreen({super.key, required this.email});
@@ -17,21 +16,6 @@ class OtpVerifyScreen extends StatefulWidget {
 
 class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
   String otp = "";
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    suma();
-  }
-
-  void suma() async {
-    sb.SupabaseClient supabaseClient = sb.Supabase.instance.client;
-    print(await supabaseClient.auth.getUser());
-    print(supabaseClient.auth.currentSession);
-    print(supabaseClient.auth.currentSession!.accessToken);
-    print(supabaseClient.auth.currentSession!.refreshToken);
-    print(supabaseClient.auth.currentUser);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +27,13 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
               context,
               MaterialPageRoute(
                 builder: (context) => const OtpResultScreen(),
+              ),
+            );
+          }
+          if (state is AuthFailureState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.failureMessage),
               ),
             );
           }
@@ -162,9 +153,15 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                           ),
                         );
                       } else {
-                        context
-                            .read<AuthBloc>()
-                            .add(VerifyOtpEvent(otp: otp, email: widget.email));
+                        if (state is AuthOtpSentState) {
+                          context.read<AuthBloc>().add(
+                                VerifyOtpEvent(
+                                  otp: otp,
+                                  email: widget.email,
+                                  userId: state.userId,
+                                ),
+                              );
+                        }
                       }
                     },
                     child: const Text("Verify"),

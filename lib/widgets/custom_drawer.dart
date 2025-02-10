@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lazendeals/auth/auth_bloc/auth_bloc.dart';
+import 'package:lazendeals/auth/screens/login_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -52,7 +53,15 @@ class CustomDrawer extends StatelessWidget {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(),
               onPressed: () {
-                context.read<AuthBloc>().add(AuthLogOutEvent());
+                context.read<AuthBloc>().add(AuthLogOutEvent(context: context));
+
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                  (route) => false,
+                );
               },
               child: const Row(
                 mainAxisSize: MainAxisSize.min,

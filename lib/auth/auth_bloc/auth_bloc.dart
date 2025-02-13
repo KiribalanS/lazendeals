@@ -42,7 +42,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         userId: event.userId,
         secret: event.otp,
       );
-
+      print("object");
+      print(event.email);
       emit(
         AuthSuccessState(message: session.secret, uid: session.userId),
       );

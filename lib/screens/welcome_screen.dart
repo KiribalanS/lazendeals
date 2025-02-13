@@ -9,35 +9,37 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomContainer(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 15,
-            ),
-            const Image(
-              height: 115,
-              width: 115,
-              image: AssetImage("assets/images/logo.png"),
-            ),
-            Text(
-              "Lazendeals",
-              style: Theme.of(context).appBarTheme.titleTextStyle,
-            ),
-            const Expanded(
-              child: Center(
-                child: Text(
-                  "Welcome to Lazendeals",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.normal,
+        child: SafeArea(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 15,
+              ),
+              const Image(
+                height: 115,
+                width: 115,
+                image: AssetImage("assets/images/logo.png"),
+              ),
+              Text(
+                "Lazendeals",
+                style: Theme.of(context).appBarTheme.titleTextStyle,
+              ),
+              const Expanded(
+                child: Center(
+                  child: Text(
+                    "Welcome to Lazendeals",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.normal,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 85,
-            ),
-          ],
+              const SizedBox(
+                height: 85,
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: ElevatedButton(

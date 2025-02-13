@@ -30,15 +30,9 @@ class _LoginScreenState extends State<LoginScreen> {
             Brightness.light, // Or Brightness.dark
       ),
       child: Scaffold(
-        // appBar: AppBar(
-        //   elevation: 0,
-        //   systemOverlayStyle: const SystemUiOverlayStyle(
-        //     statusBarColor: Colors.transparent,
-        //     statusBarIconBrightness: Brightness.light,
-        //     systemNavigationBarColor: Colors.transparent,
-        //     systemNavigationBarIconBrightness: Brightness.light,
-        //   ),
-        // ),
+        appBar: AppBar(
+          elevation: 0,
+        ),
         extendBodyBehindAppBar: true,
         extendBody: true,
         backgroundColor: Colors.transparent,

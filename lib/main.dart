@@ -11,21 +11,15 @@ import 'package:lazendeals/screens/home_screen.dart';
 import 'package:appwrite/appwrite.dart';
 
 Future<void> main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-  //   statusBarColor: Colors.transparent,
-  //   statusBarIconBrightness: Brightness.dark,
-  //   systemNavigationBarColor: Colors.white, // Change navigation bar color
-  //   systemNavigationBarIconBrightness: Brightness.dark, // Change button color
-  // ));
-  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-  // await Supabase.initialize(
-  //   // url: 'http://192.168.0.138:8001',
-  //   url: 'http://192.168.1.4:8001',
-  //   anonKey:
-  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
-  // );
-
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.blue, // Fully blue status bar
+      // statusBarIconBrightness: Brightness.dark, // Adjust for light/dark theme
+      systemNavigationBarColor: Colors.blue, // blue nav bar
+      // systemNavigationBarIconBrightness: Brightness.dark, // Adjust icon color
+    ),
+  );
   runApp(const MyApp());
 }
 

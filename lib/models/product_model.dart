@@ -26,4 +26,9 @@ class ProductModel {
     this.isLiked,
     this.productSize,
   });
+
+  @override
+  String toString() {
+    return 'ProductModel(productName: $productName, category: $category, productId: $productId, description: $description, price: $price, delivery: $delivery, manufacturer: $manufacturer, review: $review, productImage: $productImage, productSize: $productSize, isLiked: $isLiked)';
+  }
 }

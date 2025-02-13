@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomContainer extends StatelessWidget {
   const CustomContainer({
@@ -8,6 +9,12 @@ class CustomContainer extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    //   statusBarColor: Colors.blue, // Or your color
+    //   statusBarIconBrightness: Brightness.dark, // Or Brightness.dark
+    //   systemNavigationBarColor: Colors.blue, // Or your color
+    //   systemNavigationBarIconBrightness: Brightness.dark, // Or Brightness.dark
+    // ));
     return SafeArea(
       child: Container(
         margin: const EdgeInsets.all(3),

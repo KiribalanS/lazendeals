@@ -5,6 +5,7 @@ import 'package:lazendeals/models/dummy.dart';
 import 'package:lazendeals/cart/screens/cart_screen.dart';
 import 'package:lazendeals/screens/confirm_address.dart';
 import 'package:lazendeals/widgets/advertisement_widget.dart';
+import 'package:lazendeals/widgets/custom_appbar.dart';
 import 'package:lazendeals/widgets/custom_drawer.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
 
@@ -24,34 +25,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return Scaffold(
       key: scaffoldKey,
       drawer: const CustomDrawer(),
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            size: 32,
-            color: Colors.black,
-          ),
-          onPressed: () => scaffoldKey.currentState?.openDrawer(),
-        ),
-        title: const Text(
-          "Lazendeals",
-          style: TextStyle(
-            fontSize: 37,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.notifications,
-              size: 35,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
+      appBar: customAppBar(scaffoldKey),
       body: Stack(
         children: [
           SingleChildScrollView(

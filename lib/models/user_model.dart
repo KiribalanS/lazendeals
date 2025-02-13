@@ -5,14 +5,19 @@ class UserModel {
   String? address;
   int? pincode;
   Gender? gender;
+  String? sessionId;
+  String? userId;
 
-  UserModel(
-      {required this.name,
-      required this.mail,
-      required this.phone,
-      this.address,
-      this.gender,
-      this.pincode});
+  UserModel({
+    this.sessionId,
+    this.userId,
+    required this.name,
+    required this.mail,
+    required this.phone,
+    this.address,
+    this.gender,
+    this.pincode,
+  });
 }
 
 enum Gender { male, female, others }

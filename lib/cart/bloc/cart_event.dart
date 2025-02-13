@@ -16,3 +16,5 @@ class RemoveCartEvent extends CartEvent {
 
   RemoveCartEvent({required this.productModel, required this.context});
 }
+
+class BuyCartEvent extends CartEvent {}

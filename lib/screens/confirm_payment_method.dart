@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lazendeals/models/product_model.dart';
 import 'package:lazendeals/models/user_model.dart';
+import 'package:lazendeals/widgets/custom_appbar.dart';
 import 'package:lazendeals/widgets/custom_drawer.dart';
 import 'package:lazendeals/widgets/custom_payment_method_widget.dart';
 
@@ -21,34 +22,7 @@ class _ConfirmPaymentMethodState extends State<ConfirmPaymentMethod> {
     return Scaffold(
       key: scaffoldKey,
       drawer: const CustomDrawer(),
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            size: 32,
-            color: Colors.black,
-          ),
-          onPressed: () => scaffoldKey.currentState?.openDrawer(),
-        ),
-        title: const Text(
-          "Lazendeals",
-          style: TextStyle(
-            fontSize: 37,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.notifications,
-              size: 35,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
+      appBar: customAppBar(scaffoldKey),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

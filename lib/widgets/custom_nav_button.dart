@@ -81,19 +81,20 @@ class MyWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const HomeScreen(),
-                              ));
-                        },
-                        icon: const Image(
-                            height: 35,
-                            width: 35,
-                            image: AssetImage(
-                                "assets/images/custom_nav/home.png"))),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomeScreen(),
+                            ));
+                      },
+                      icon: const Image(
+                        height: 35,
+                        width: 35,
+                        image: AssetImage("assets/images/custom_nav/home.png"),
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(5.0),

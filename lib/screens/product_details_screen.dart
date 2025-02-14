@@ -3,14 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lazendeals/cart/bloc/cart_bloc.dart';
 import 'package:lazendeals/models/dummy.dart';
 import 'package:lazendeals/cart/screens/cart_screen.dart';
+import 'package:lazendeals/models/product_model.dart';
 import 'package:lazendeals/screens/confirm_address.dart';
 import 'package:lazendeals/widgets/advertisement_widget.dart';
 import 'package:lazendeals/widgets/custom_appbar.dart';
 import 'package:lazendeals/widgets/custom_drawer.dart';
 import 'package:lazendeals/widgets/custom_nav_button.dart';
+import 'package:lazendeals/wishlist/cubit/wishlist_cubit.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({super.key, required this.productModel});
+  final ProductModel productModel;
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -126,11 +129,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.favorite,
-                            ),
+                          BlocBuilder<WishlistCubit, List<ProductModel>>(
+                            builder: (context, state) {
+                              return IconButton(
+                                onPressed: () {
+                                  context.read<WishlistCubit>().addToWishList(
+                                      widget.productModel, context);
+                                },
+                                icon: Icon(
+                                  state.contains(widget.productModel)
+                                      ? Icons.favorite
+                                      : Icons.favorite_border_outlined,
+                                ),
+                              );
+                            },
                           ),
                           IconButton(
                             onPressed: () {},

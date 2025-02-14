@@ -9,6 +9,7 @@ import 'package:lazendeals/auth/screens/login_screen.dart';
 import 'package:lazendeals/cart/bloc/cart_bloc.dart';
 import 'package:lazendeals/screens/home_screen.dart';
 import 'package:appwrite/appwrite.dart';
+import 'package:lazendeals/wishlist/cubit/wishlist_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,6 +64,9 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (_) => CartBloc(),
         ),
+        BlocProvider(
+          create: (context) => WishlistCubit(),
+        )
       ],
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: const SystemUiOverlayStyle(
@@ -71,6 +75,16 @@ class _MyAppState extends State<MyApp> {
         ),
         child: MaterialApp(
           theme: ThemeData(
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                iconColor: Colors.black,
+                backgroundColor: const Color.fromRGBO(251, 215, 187, 1),
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+            ),
             appBarTheme: AppBarTheme(
               backgroundColor: const Color.fromRGBO(251, 215, 187, 1),
               elevation: 4, // Shadow under the AppBar
@@ -87,6 +101,7 @@ class _MyAppState extends State<MyApp> {
           ),
           debugShowCheckedModeBanner: false,
           home: user == null ? const LoginScreen() : const HomeScreen(),
+          // home: const HomeScreen(),
         ),
       ),
     );

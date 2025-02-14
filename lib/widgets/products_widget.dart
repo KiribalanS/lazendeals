@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lazendeals/cart/bloc/cart_bloc.dart';
+import 'package:lazendeals/models/dummy.dart';
 import 'package:lazendeals/models/product_model.dart';
 import 'package:lazendeals/screens/product_details_screen.dart';
+import 'package:lazendeals/wishlist/cubit/wishlist_cubit.dart';
 
 class ProductsWidget extends StatefulWidget {
   const ProductsWidget({
@@ -129,8 +131,9 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    const ProductDetailsScreen(),
+                                builder: (context) => ProductDetailsScreen(
+                                  productModel: dummyProduct[0],
+                                ),
                               ),
                             );
                           },
@@ -150,9 +153,21 @@ class _ProductsWidgetState extends State<ProductsWidget> {
               ),
               SizedBox(
                 width: 25,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.favorite_border_outlined),
+                child: BlocBuilder<WishlistCubit, List<ProductModel>>(
+                  builder: (context, state) {
+                    return IconButton(
+                      onPressed: () {
+                        context
+                            .read<WishlistCubit>()
+                            .addToWishList(widget.productModel, context);
+                      },
+                      icon: Icon(
+                        state.contains(widget.productModel)
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

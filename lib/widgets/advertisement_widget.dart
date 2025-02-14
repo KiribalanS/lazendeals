@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lazendeals/models/dummy.dart';
 import 'package:lazendeals/screens/product_details_screen.dart';
 
 class AdvertisementWidget extends StatelessWidget {
@@ -10,7 +11,9 @@ class AdvertisementWidget extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const ProductDetailsScreen(),
+          builder: (context) => ProductDetailsScreen(
+            productModel: dummyProduct[0],
+          ),
         ),
       ),
       child: Container(

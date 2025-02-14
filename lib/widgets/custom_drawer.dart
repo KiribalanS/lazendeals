@@ -1,29 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:lazendeals/auth/auth_bloc/auth_bloc.dart';
 import 'package:lazendeals/auth/screens/login_screen.dart';
+import 'package:lazendeals/wishlist/screens/wishlist_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<String> functionNames = [
-      "Account Details",
-      "Wishlist",
-      "About Us",
-      "Privacy Policy",
-      "Customer care",
-      "Help Us",
+    List<CustomMenu> menus = [
+      CustomMenu(
+        name: "Account Details",
+        icon: Icons.account_circle_sharp,
+        callBack: () {},
+      ),
+      CustomMenu(
+        name: "Wishlist",
+        icon: Icons.favorite,
+        callBack: () {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const WishlistScreen(),
+              ));
+        },
+      ),
+      CustomMenu(
+        name: "About Us",
+        icon: Icons.info,
+        callBack: () {},
+      ),
+      CustomMenu(
+        name: "Privacy Policy",
+        icon: Icons.privacy_tip,
+        callBack: () {},
+      ),
+      CustomMenu(
+        name: "Customer care",
+        icon: Icons.phone,
+        callBack: () {},
+      ),
+      CustomMenu(
+        name: "Help Us",
+        icon: Icons.question_mark_outlined,
+        callBack: () {},
+      ),
     ];
-    Map<String, IconData> functionIcons = {
-      "Account Details": Icons.account_circle_sharp,
-      "Wishlist": Icons.favorite,
-      "About Us": Icons.info,
-      "Privacy Policy": Icons.privacy_tip,
-      "Customer care": Icons.phone,
-      "Help Us": Icons.question_mark_outlined,
-    };
+
     final mediaQuery = MediaQuery.of(context).size;
     return Drawer(
       backgroundColor: const Color.fromRGBO(252, 238, 197, 1),
@@ -39,11 +64,12 @@ class CustomDrawer extends StatelessWidget {
           SizedBox(height: mediaQuery.height * .02),
           Expanded(
             child: ListView.builder(
-              itemCount: functionNames.length,
+              itemCount: menus.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(functionNames[index]),
-                  leading: Icon(functionIcons[functionNames[index]]),
+                  title: Text(menus[index].name),
+                  leading: Icon(menus[index].icon),
+                  onTap: menus[index].callBack,
                 );
               },
             ),
@@ -91,4 +117,15 @@ class CustomDrawer extends StatelessWidget {
       ),
     );
   }
+}
+
+class CustomMenu {
+  String name;
+  IconData icon;
+  void Function() callBack;
+  CustomMenu({
+    required this.name,
+    required this.icon,
+    required this.callBack,
+  });
 }

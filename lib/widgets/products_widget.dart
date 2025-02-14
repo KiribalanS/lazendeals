@@ -22,7 +22,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
           Row(
@@ -72,9 +72,9 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                       fontSize: 20,
                     ),
                   ),
-                  const Text(
-                    "Price : Rs 1000",
-                    style: TextStyle(
+                  Text(
+                    "Price : Rs ${widget.productModel.price}",
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),
@@ -84,7 +84,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: SizedBox(
-                  width: mediaQuery.width * .49,
+                  width: mediaQuery.width * .46,
                   child: Column(
                     children: [
                       const Text(
@@ -94,11 +94,16 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                           fontSize: 20,
                         ),
                       ),
-                      Text(
-                        widget.productModel.description,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 16,
+                      SizedBox(
+                        width: mediaQuery.width * .46,
+                        child: Text(
+                          widget.productModel.description,
+                          softWrap: true,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                       ElevatedButton(
@@ -152,7 +157,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                 ),
               ),
               SizedBox(
-                width: 35,
+                width: 37,
                 child: BlocBuilder<WishlistCubit, List<ProductModel>>(
                   builder: (context, state) {
                     return IconButton(

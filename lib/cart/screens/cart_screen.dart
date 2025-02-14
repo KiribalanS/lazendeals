@@ -16,6 +16,8 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  double price = 0, discount = 0, deliveryCharges = 0, total = 0.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +42,18 @@ class _CartScreenState extends State<CartScreen> {
                 ),
               ),
               BlocConsumer<CartBloc, List<ProductModel>>(
-                listener: (context, state) {},
+                listener: (context, state) {
+                  if (state.isNotEmpty) {
+                    for (var element in state) {
+                      setState(() {
+                        price += element.price;
+                        discount = price % .5;
+                        deliveryCharges += element.delivery;
+                        total = price - deliveryCharges;
+                      });
+                    }
+                  }
+                },
                 builder: (context, state) {
                   if (state.isEmpty) {
                     return const Expanded(
@@ -51,6 +64,16 @@ class _CartScreenState extends State<CartScreen> {
                         ),
                       ),
                     );
+                  }
+                  price = 0;
+                  discount = 0;
+                  deliveryCharges = 0;
+                  total = 0;
+                  for (var element in state) {
+                    price = ((price + element.price) * 100).toInt() / 100;
+                    discount = ((price % .1) * 100).toInt() / 100;
+                    deliveryCharges += element.delivery;
+                    total = ((price - deliveryCharges) * 100).toInt() / 100;
                   }
                   return Expanded(
                     child: SingleChildScrollView(
@@ -90,21 +113,21 @@ class _CartScreenState extends State<CartScreen> {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          const CustomRow(
+                          CustomRow(
                             content1: "Price ",
-                            content2: "Rs : 240",
+                            content2: "Rs : $price",
                           ),
-                          const CustomRow(
+                          CustomRow(
                             content1: "Discount ",
-                            content2: "Rs : 0.0",
+                            content2: "Rs : $discount",
                           ),
-                          const CustomRow(
+                          CustomRow(
                             content1: "Delivery charges ",
-                            content2: "Rs : 40",
+                            content2: "Rs : $deliveryCharges",
                           ),
-                          const CustomRow(
+                          CustomRow(
                             content1: "Total amount ",
-                            content2: "Rs : 280",
+                            content2: "Rs : $total",
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),

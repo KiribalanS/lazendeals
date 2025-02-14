@@ -13,12 +13,9 @@ class CartBloc extends Bloc<CartEvent, List<ProductModel>> {
   }
   @override
   void onChange(Change<List<ProductModel>> change) {
-    // Always call super.onChange with the current change
     super.onChange(change);
 
     print(change);
-
-    // Custom onChange logic goes here
   }
 
   void _addProductToCart(AddCartEvent event, Emitter<List<ProductModel>> emit) {

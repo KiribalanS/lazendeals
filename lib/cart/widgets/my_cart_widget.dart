@@ -94,9 +94,9 @@ class MyCartWidget extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                const Text(
-                  "Price : Rs 1000",
-                  style: TextStyle(
+                Text(
+                  "Price : Rs ${productModel.price}",
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),

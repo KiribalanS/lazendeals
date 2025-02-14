@@ -25,20 +25,24 @@ class _ProductsScreenState extends State<ProductsScreen> {
       appBar: customAppBar(scaffoldKey),
       body: Stack(
         children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: dummyProduct.length,
-                  itemBuilder: (context, index) {
-                    return ProductsWidget(
-                      productModel: dummyProduct[index],
-                    );
-                  },
-                ),
-              ],
+          SizedBox(
+            height: mediaQuery.height,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: dummyProduct.length,
+                    itemBuilder: (context, index) {
+                      return ProductsWidget(
+                        productModel: dummyProduct[index],
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           const Positioned(

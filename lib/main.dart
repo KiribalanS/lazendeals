@@ -7,20 +7,14 @@ import 'package:lazendeals/appwrite_account.dart';
 import 'package:lazendeals/auth/auth_bloc/auth_bloc.dart';
 import 'package:lazendeals/auth/screens/login_screen.dart';
 import 'package:lazendeals/cart/bloc/cart_bloc.dart';
+import 'package:lazendeals/constants/ui_constants.dart';
 import 'package:lazendeals/screens/home_screen.dart';
 import 'package:appwrite/appwrite.dart';
+import 'package:lazendeals/widgets/custom_container.dart';
 import 'package:lazendeals/wishlist/cubit/wishlist_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.blue, // Fully blue status bar
-      // statusBarIconBrightness: Brightness.dark, // Adjust for light/dark theme
-      systemNavigationBarColor: Colors.blue, // blue nav bar
-      // systemNavigationBarIconBrightness: Brightness.dark, // Adjust icon color
-    ),
-  );
   runApp(const MyApp());
 }
 
@@ -34,9 +28,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // bool isUserAuthenticated() {
   User? user;
+  bool isLoading = false;
 
   void checkUser() async {
-    Account account = AppwriteAccount.getAccount;
+    setState(() {
+      isLoading = true;
+    });
+    Account account = AppwriteAccount.getCloudAccount;
     try {
       final loggedInUser = await account.get();
       setState(() {
@@ -45,6 +43,9 @@ class _MyAppState extends State<MyApp> {
     } catch (e) {
       print(e.toString());
     }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -78,10 +79,16 @@ class _MyAppState extends State<MyApp> {
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
                 iconColor: Colors.black,
-                backgroundColor: const Color.fromRGBO(251, 215, 187, 1),
+                backgroundColor: const Color.fromARGB(255, 236, 173, 125),
                 elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2),
+                ),
+                foregroundColor: Colors.black,
+                textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
@@ -100,8 +107,61 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
           debugShowCheckedModeBanner: false,
-          home: user == null ? const LoginScreen() : const HomeScreen(),
-          // home: const HomeScreen(),
+          home: isLoading
+              ? Scaffold(
+                  body: CustomContainer(
+                    child: SafeArea(
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                UiConstants.logoImage,
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8.0),
+                                  child: Text(
+                                    "Lazendeals",
+                                    textAlign: TextAlign.center,
+                                    style:
+                                        GoogleFonts.cinzelDecorative().copyWith(
+                                      color: Colors.black,
+                                      fontSize: 37,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CircularProgressIndicator(),
+                                  Text(
+                                    "Session loading...\nPlease wait",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              : user == null
+                  ? const LoginScreen()
+                  : const HomeScreen(),
         ),
       ),
     );

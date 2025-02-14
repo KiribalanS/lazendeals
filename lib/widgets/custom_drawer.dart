@@ -6,8 +6,11 @@ import 'package:lazendeals/auth/screens/login_screen.dart';
 import 'package:lazendeals/wishlist/screens/wishlist_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
-
+  const CustomDrawer({
+    super.key,
+    required this.scaffoldKey,
+  });
+  final GlobalKey<ScaffoldState> scaffoldKey;
   @override
   Widget build(BuildContext context) {
     List<CustomMenu> menus = [
@@ -20,7 +23,8 @@ class CustomDrawer extends StatelessWidget {
         name: "Wishlist",
         icon: Icons.favorite,
         callBack: () {
-          Navigator.pushReplacement(
+          scaffoldKey.currentState?.closeDrawer();
+          Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => const WishlistScreen(),

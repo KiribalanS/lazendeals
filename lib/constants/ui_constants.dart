@@ -10,4 +10,10 @@ class UiConstants {
       ),
     );
   }
+
+  static const logoImage = Image(
+    height: 115,
+    width: 115,
+    image: AssetImage("assets/images/logo.png"),
+  );
 }

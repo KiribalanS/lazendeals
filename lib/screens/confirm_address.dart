@@ -25,7 +25,9 @@ class _ConfirmAddressState extends State<ConfirmAddress> {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       key: scaffoldKey,
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(
+        scaffoldKey: scaffoldKey,
+      ),
       appBar: customAppBar(scaffoldKey),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -62,6 +62,7 @@ class _ContinueShoppingState extends State<ContinueShopping>
               padding: EdgeInsets.all(8.0),
               child: Text(
                 "Your order has been placed successfully",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.normal,

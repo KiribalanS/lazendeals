@@ -7,7 +7,7 @@ import 'package:lazendeals/appwrite_account.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
-final Account account = AppwriteAccount.getAccount;
+final Account account = AppwriteAccount.getCloudAccount;
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {

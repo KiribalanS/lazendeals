@@ -152,7 +152,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                 ),
               ),
               SizedBox(
-                width: 25,
+                width: 35,
                 child: BlocBuilder<WishlistCubit, List<ProductModel>>(
                   builder: (context, state) {
                     return IconButton(
@@ -162,6 +162,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                             .addToWishList(widget.productModel, context);
                       },
                       icon: Icon(
+                        size: 21,
                         state.contains(widget.productModel)
                             ? Icons.favorite
                             : Icons.favorite_border_outlined,

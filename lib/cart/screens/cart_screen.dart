@@ -20,7 +20,9 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(
+        scaffoldKey: scaffoldKey,
+      ),
       appBar: customAppBar(scaffoldKey),
       body: Stack(
         children: [

@@ -18,7 +18,9 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       key: scaffoldKey,
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(
+        scaffoldKey: scaffoldKey,
+      ),
       appBar: customAppBar(scaffoldKey),
       body: Stack(
         children: [

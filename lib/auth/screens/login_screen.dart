@@ -33,8 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
         appBar: AppBar(
           elevation: 0,
         ),
-        extendBodyBehindAppBar: true,
-        extendBody: true,
+        extendBodyBehindAppBar: false,
+        extendBody: false,
         backgroundColor: Colors.transparent,
         body: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
@@ -143,19 +143,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          ctx.read<AuthBloc>().add(
-                                AuthLoginEvent(
-                                  email: emailController.text.trim(),
-                                  name: nameController.text.trim(),
-                                  phone: phoneNumberController.text.trim(),
-                                ),
-                              );
-                        }
-                      },
-                      child: const Text("Login"),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            ctx.read<AuthBloc>().add(
+                                  AuthLoginEvent(
+                                    email: emailController.text.trim(),
+                                    name: nameController.text.trim(),
+                                    phone: phoneNumberController.text.trim(),
+                                  ),
+                                );
+                          }
+                        },
+                        child: const Text("Login"),
+                      ),
                     ),
                     const SizedBox(
                       height: 50,

@@ -12,40 +12,42 @@ class CustomNavButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return getPopUp(context);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 11.0),
-      child: SizedBox(
-          height: MediaQuery.of(context).size.height * .08,
-          child: Center(
-            child: Stack(
-              children: [
-                const Image(
-                  image: AssetImage("assets/images/logo.png"),
-                  height: 85,
-                  width: 85,
-                ),
-                InkWell(
-                  child: const Hero(
-                    tag: 'hero-custom-tween',
-                    child: Image(
-                      image: AssetImage("assets/images/logo.png"),
-                      height: 85,
-                      width: 85,
-                    ),
+    return Semantics(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 11.0),
+        child: SizedBox(
+            height: MediaQuery.of(context).size.height * .08,
+            child: Center(
+              child: Stack(
+                children: [
+                  const Image(
+                    image: AssetImage("assets/images/logo.png"),
+                    height: 85,
+                    width: 85,
                   ),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      HeroDialogRoute(
-                        builder: (context) => const Center(
-                          child: MyWidget(),
-                        ),
+                  InkWell(
+                    child: const Hero(
+                      tag: 'hero-custom-tween',
+                      child: Image(
+                        image: AssetImage("assets/images/logo.png"),
+                        height: 85,
+                        width: 85,
                       ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          )),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        HeroDialogRoute(
+                          builder: (context) => const Center(
+                            child: MyWidget(),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            )),
+      ),
     );
   }
 }

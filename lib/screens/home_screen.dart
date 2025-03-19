@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:lazendeals/models/dummy.dart';
 import 'package:lazendeals/screens/product_details_screen.dart';
 import 'package:lazendeals/screens/products_screen.dart';
@@ -46,11 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(
-                  // decoration: BoxDecoration(
-                  //     // border: Border.all(),
-                  //     // borderRadius: BorderRadius.circular(15),
-
-                  //     ),
                   height: mediaQuery.height * 0.22,
                   width: mediaQuery.width * 0.85,
                   child: Center(
@@ -132,43 +126,46 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 25,
                 ),
-                InkWell(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductDetailsScreen(
-                        productModel: dummyProduct[0],
-                      ),
-                    ),
-                  ),
-                  child: Container(
-                    alignment: Alignment.bottomCenter,
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage("assets/images/sweet.png"),
-                        fit: BoxFit.cover,
-                      ),
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
-                      ),
-                      border: Border.all(width: 2.5),
-                    ),
-                    height: mediaQuery.height * .2,
-                    width: mediaQuery.width * .85,
-                    child: LayoutBuilder(builder: (context, constraints) {
-                      return Container(
-                        height: 37,
-                        width: constraints.maxWidth,
-                        color: const Color.fromRGBO(251, 215, 187, 1),
-                        child: const Center(
-                          child: Text(
-                            "Tamil Nadu\nSweets and snacks",
-                            textAlign: TextAlign.center,
-                          ),
+                Semantics(
+                  hint: "Advertisement",
+                  child: InkWell(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetailsScreen(
+                          productModel: dummyProduct[0],
                         ),
-                      );
-                    }),
+                      ),
+                    ),
+                    child: Container(
+                      alignment: Alignment.bottomCenter,
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                          image: AssetImage("assets/images/sweet.png"),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15),
+                        ),
+                        border: Border.all(width: 2.5),
+                      ),
+                      height: mediaQuery.height * .2,
+                      width: mediaQuery.width * .85,
+                      child: LayoutBuilder(builder: (context, constraints) {
+                        return Container(
+                          height: 37,
+                          width: constraints.maxWidth,
+                          color: const Color.fromRGBO(251, 215, 187, 1),
+                          child: const Center(
+                            child: Text(
+                              "Tamil Nadu\nSweets and snacks",
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -208,11 +205,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: mediaQuery.height * 0.135,
+                ),
               ],
             ),
           ),
           const Positioned(
-            bottom: 35,
+            bottom: 30,
             left: 10,
             right: 10,
             child: CustomNavButton(),

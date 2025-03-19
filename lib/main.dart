@@ -34,12 +34,13 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       isLoading = true;
     });
-    Account account = AppwriteAccount.getCloudAccount;
+    Account account = AppwriteAccount.getAccount;
     try {
       final loggedInUser = await account.get();
       setState(() {
         user = loggedInUser;
       });
+      
     } catch (e) {
       print(e.toString());
     }
@@ -53,6 +54,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     checkUser();
     print(user.toString());
+    print(Theme.of(context).appBarTheme.toString());
   }
 
   @override

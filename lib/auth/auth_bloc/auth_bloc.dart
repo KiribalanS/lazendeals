@@ -3,13 +3,14 @@ import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lazendeals/appwrite_account.dart';
+import 'package:lazendeals/local_storage/store_prefs.dart/user_preferences.dart';
+import 'package:lazendeals/models/user_model.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
-final Account account = AppwriteAccount.getCloudAccount;
-
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  final Account account = AppwriteAccount.getAccount;
   AuthBloc() : super(AuthInitial()) {
     on<AuthLoginEvent>(_authLoginEvent);
 
@@ -42,8 +43,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         userId: event.userId,
         secret: event.otp,
       );
-      print("object");
-      print(event.email);
+
+      final userData = await account.get();
+      userModel.userId = session.$id;
+      userModel.mail = userData.email;
+      userModel.name = userData.name;
+      // userModel.gender =
+      //     userData.prefs.data["gender"] == "male" ? Gender.male : Gender.female;
+      // userModel.address = userData.prefs.data["address"];
+      // userModel.phone = userData.prefs.data["phone"];
+      // userModel.pincode = userData.prefs.data["pincode"];
+      UserPreferences.setPreferences("user", userModel);
       emit(
         AuthSuccessState(message: session.secret, uid: session.userId),
       );
